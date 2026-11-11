@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24243a">
+  <title>Japanisch – Karteikarten</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#24243a">
+
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <p class="eyebrow">LERNKARTEN</p>
+      <h1>Japanisch lernen</h1>
+      <p class="subtitle">Zeichen ansehen, umdrehen und merken.</p>
+    </header>
+
+    <section class="controls" aria-label="Kartenauswahl">
+      <label for="category">Kategorie</label>
+      <select id="category">
+        <option value="hiragana">Hiragana</option>
+        <option value="katakana">Katakana</option>
+        <option value="kanji">Häufige Kanji</option>
+      </select>
+    </section>
+
+    <section class="study">
+      <div class="progress-row">
+        <span id="counter">Karte 1 / 46</span>
+        <span id="progress-label">0 gelernt</span>
+      </div>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+
+      <button class="flashcard" id="flashcard" type="button" aria-label="Karte umdrehen">
+        <span class="card-hint" id="card-hint">Zum Umdrehen antippen</span>
+        <span class="character" id="character">あ</span>
+        <span class="answer hidden" id="answer">
+          <strong id="reading">a</strong>
+          <span id="meaning"></span>
+        </span>
+      </button>
+
+      <div class="actions">
+        <button class="secondary" id="previous">← Zurück</button>
+        <button class="primary" id="flip">Umdrehen</button>
+        <button class="secondary" id="next">Weiter →</button>
+      </div>
+      <div class="bottom-actions">
+        <button class="text-button" id="shuffle">Mischen</button>
+        <button class="text-button" id="reset">Fortschritt zurücksetzen</button>
+      </div>
+    </section>
+
+    <footer>Dein Lernfortschritt wird lokal in diesem Browser gespeichert.</footer>
+  </main>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js");
+      });
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+// Hier liegen die Lernkarten. Du kannst Einträge ergänzen oder ändern.
+// type: "kana" = Aussprache, "kanji" = Bedeutung + Lesungen.
+
+const cardSets = {
+  hiragana: [
+    ["あ","a"],["い","i"],["う","u"],["え","e"],["お","o"],
+    ["か","ka"],["き","ki"],["く","ku"],["け","ke"],["こ","ko"],
+    ["さ","sa"],["し","shi"],["す","su"],["せ","se"],["そ","so"],
+    ["た","ta"],["ち","chi"],["つ","tsu"],["て","te"],["と","to"],
+    ["な","na"],["に","ni"],["ぬ","nu"],["ね","ne"],["の","no"],
+    ["は","ha"],["ひ","hi"],["ふ","fu"],["へ","he"],["ほ","ho"],
+    ["ま","ma"],["み","mi"],["む","mu"],["め","me"],["も","mo"],
+    ["や","ya"],["ゆ","yu"],["よ","yo"],
+    ["ら","ra"],["り","ri"],["る","ru"],["れ","re"],["ろ","ro"],
+    ["わ","wa"],["を","wo (meist als Partikel „o“ gesprochen)"],["ん","n"]
+  ].map(([character, reading]) => ({ character, reading, meaning: "Aussprache" })),
+
+  katakana: [
+    ["ア","a"],["イ","i"],["ウ","u"],["エ","e"],["オ","o"],
+    ["カ","ka"],["キ","ki"],["ク","ku"],["ケ","ke"],["コ","ko"],
+    ["サ","sa"],["シ","shi"],["ス","su"],["セ","se"],["ソ","so"],
+    ["タ","ta"],["チ","chi"],["ツ","tsu"],["テ","te"],["ト","to"],
+    ["ナ","na"],["ニ","ni"],["ヌ","nu"],["ネ","ne"],["ノ","no"],
+    ["ハ","ha"],["ヒ","hi"],["フ","fu"],["ヘ","he"],["ホ","ho"],
+    ["マ","ma"],["ミ","mi"],["ム","mu"],["メ","me"],["モ","mo"],
+    ["ヤ","ya"],["ユ","yu"],["ヨ","yo"],
+    ["ラ","ra"],["リ","ri"],["ル","ru"],["レ","re"],["ロ","ro"],
+    ["ワ","wa"],["ヲ","wo (meist als Partikel „o“ gesprochen)"],["ン","n"]
+  ].map(([character, reading]) => ({ character, reading, meaning: "Aussprache" })),
+
+  // Eine kleine Startauswahl häufiger Basis-Kanji. Lesungen sind Beispiele;
+  // Kanji können je nach Wort unterschiedlich ausgesprochen werden.
+  kanji: [
+    ["日","ひ (hi) / にち (nichi)","Tag; Sonne"],
+    ["月","つき (tsuki) / げつ (getsu)","Mond; Monat"],
+    ["人","ひと (hito) / じん (jin)","Mensch; Person"],
+    ["大","おお (oo) / だい (dai)","gross"],
+    ["小","ちい (chii) / しょう (shou)","klein"],
+    ["山","やま (yama) / さん (san)","Berg"],
+    ["川","かわ (kawa) / せん (sen)","Fluss"],
+    ["水","みず (mizu) / すい (sui)","Wasser"],
+    ["火","ひ (hi) / か (ka)","Feuer"],
+    ["木","き (ki) / もく (moku)","Baum; Holz"],
+    ["金","かね (kane) / きん (kin)","Gold; Geld"],
+    ["土","つち (tsuchi) / ど (do)","Erde; Boden"],
+    ["本","ほん (hon) / もと (moto)","Buch; Ursprung"],
+    ["中","なか (naka) / ちゅう (chuu)","innen; Mitte"],
+    ["上","うえ (ue) / じょう (jou)","oben"],
+    ["下","した (shita) / か (ka)","unten"],
+    ["左","ひだり (hidari) / さ (sa)","links"],
+    ["右","みぎ (migi) / う (u)","rechts"],
+    ["口","くち (kuchi) / こう (kou)","Mund"],
+    ["目","め (me) / もく (moku)","Auge"],
+    ["耳","みみ (mimi)","Ohr"],
+    ["手","て (te) / しゅ (shu)","Hand"],
+    ["足","あし (ashi) / そく (soku)","Fuss; Bein"],
+    ["力","ちから (chikara) / りょく (ryoku)","Kraft"],
+    ["学","まな (mana) / がく (gaku)","lernen; Studium"],
+    ["校","こう (kou)","Schule (Bestandteil von 学校)"],
+    ["生","い (i) / せい (sei)","Leben; geboren werden"],
+    ["先","さき (saki) / せん (sen)","vorher; voraus"],
+    ["年","とし (toshi) / ねん (nen)","Jahr"],
+    ["時","とき (toki) / じ (ji)","Zeit; Stunde"],
+    ["分","わ (wa) / ふん (fun)","Minute; Teil"],
+    ["今","いま (ima) / こん (kon)","jetzt"],
+    ["何","なに (nani) / なん (nan)","was"],
+    ["名","な (na) / めい (mei)","Name"],
+    ["友","とも (tomo) / ゆう (yuu)","Freund"],
+    ["女","おんな (onna) / じょ (jo)","Frau"],
+    ["男","おとこ (otoko) / だん (dan)","Mann"],
+    ["子","こ (ko) / し (shi)","Kind"],
+    ["父","ちち (chichi) / ふ (fu)","Vater"],
+    ["母","はは (haha) / ぼ (bo)","Mutter"],
+    ["食","た (ta) / しょく (shoku)","essen; Nahrung"],
+    ["見","み (mi) / けん (ken)","sehen"],
+    ["行","い (i) / こう (kou)","gehen"],
+    ["来","く (ku) / らい (rai)","kommen"],
+    ["出","で (de) / しゅつ (shutsu)","hinausgehen; herauskommen"],
+    ["入","はい (hai) / にゅう (nyuu)","hineingehen"],
+    ["言","い (i) / げん (gen)","sagen; sprechen"],
+    ["語","かた (kata) / ご (go)","Sprache; Wort"],
+    ["車","くるま (kuruma) / しゃ (sha)","Auto; Fahrzeug"],
+    ["電","でん (den)","Elektrizität (z. B. 電車)"]
+  ].map(([character, reading, meaning]) => ({ character, reading, meaning }))
+};
